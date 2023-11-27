@@ -1,6 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+const numberChars = "0123456789";
+const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerChars = "abcdefghijklmnopqrstuvwxyz";
+const specialChars = "!@#$%^&*()";
+
+var allChars = numberChars + upperChars + lowerChars + specialChars;
+
 function generatePassword() {
   var passwordLength = prompt(
     "How many characters would you like your password to be?"
