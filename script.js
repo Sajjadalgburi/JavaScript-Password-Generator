@@ -9,13 +9,27 @@ const specialChars = "!@#$%^&*()";
 
 // Combine all character sets into one string
 var allChars = numberChars + upperChars + lowerChars + specialChars;
-
-// Function to generate a password based on user input
 function generatePassword() {
-  // Prompt the user for password length
-  var passwordLength = prompt(
-    "How many characters would you like your password to be?"
-  );
+  var passwordLength;
+
+  // Keep prompting the user until a valid numeric input is provided
+  while (true) {
+    // Prompt the user for password length
+    var input = prompt(
+      "How many characters would you like your password to be?"
+    );
+
+    // Convert the input to a number
+    passwordLength = Number(input);
+
+    // Check if the input is a valid number and within the specified range
+    if (!isNaN(passwordLength) && passwordLength > 8 && passwordLength < 128) {
+      break; // Exit the loop if the input is valid
+    } else {
+      // Alert the user if the input is not a valid number or not within the allowed range
+      window.alert("Please enter a valid number between 8 and 128.");
+    }
+  }
 
   // Confirm user preferences for password composition
   var lowerCase = confirm(
@@ -31,19 +45,12 @@ function generatePassword() {
     "Would you like your password to contain special characters?"
   );
 
-  // Convert password length to a number
-  passwordLength = Number(passwordLength);
-
-  // Check if the password length is within the specified range
-  if (passwordLength <= 8 || passwordLength >= 128) {
-    // Alert the user if the length is not within the allowed range
-    window.alert("Password must be between 8 and 128 characters");
-    return; // Exit the function
-  }
-
   // Log the password length for testing purposes
   console.log("Testing... Your Pass length is " + passwordLength);
 }
+
+// Call the function to generate the password
+generatePassword();
 
 // Function to write the generated password to the #password input field
 function writePassword() {
