@@ -9,6 +9,7 @@ const specialChars = "!@#$%^&*()";
 
 // Combine all character sets into one string
 var allChars = numberChars + upperChars + lowerChars + specialChars;
+
 function generatePassword() {
   var passwordLength;
 
@@ -31,26 +32,47 @@ function generatePassword() {
     }
   }
 
+  // append method
+  let confirmString = "";
+
   // Confirm user preferences for password composition
   var lowerCase = confirm(
     "Would you like your password to contain lowercase letters?"
   );
+
+  if (lowerCase === true) {
+    confirmString += lowerChars;
+  }
+
   var upperCase = confirm(
     "Would you like your password to contain uppercase letters?"
   );
+
+  if (upperCase === true) {
+    confirmString += upperCase;
+  }
+
   var numeric = confirm(
     "Would you like your password to contain numeric characters?"
   );
+
+  if (numeric === true) {
+    confirmString += numeric;
+  }
+
   var special = confirm(
     "Would you like your password to contain special characters?"
   );
 
+  if (special === true) {
+    confirmString += special;
+  }
+
   // Log the password length for testing purposes
   console.log("Testing... Your Pass length is " + passwordLength);
-}
 
-// Call the function to generate the password
-generatePassword();
+  return;
+}
 
 // Function to write the generated password to the #password input field
 function writePassword() {
