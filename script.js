@@ -68,8 +68,25 @@ function generatePassword() {
     confirmString += special;
   }
 
-  // Log the password length for testing purposes
-  console.log("Testing... Your Pass length is " + passwordLength);
+  console.log(confirmString);
+
+  let randPass = "";
+
+  for (let i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * confirmString.length);
+    randPass += confirmString[randomIndex];
+  }
+
+  console.log(randPass);
+
+  // var randomIndex = Math.floor(Math.random() * confirmString.length);
+
+  // console.log(randomIndex);
+
+  // console.log(confirmString[randomIndex]);
+
+  // // Log the password length for testing purposes
+  // console.log("Testing... Your Pass length is " + passwordLength);
 
   return;
 }
