@@ -24,7 +24,11 @@ function generatePassword() {
     passwordLength = Number(input);
 
     // Check if the input is a valid number and within the specified range
-    if (!isNaN(passwordLength) && passwordLength > 8 && passwordLength < 128) {
+    if (
+      !isNaN(passwordLength) &&
+      passwordLength >= 8 &&
+      passwordLength <= 128
+    ) {
       break; // Exit the loop if the input is valid
     } else {
       // Alert the user if the input is not a valid number or not within the allowed range
@@ -32,7 +36,7 @@ function generatePassword() {
     }
   }
 
-  // append method
+  // append method... Holds everything.
   let confirmString = "";
 
   // Confirm user preferences for password composition
@@ -49,15 +53,15 @@ function generatePassword() {
   );
 
   if (upperCase === true) {
-    confirmString += upperCase;
+    confirmString += upperChars;
   }
 
-  var numeric = confirm(
-    "Would you like your password to contain numeric characters?"
+  var numbers = confirm(
+    "Would you like your password to contain numbers characters?"
   );
 
-  if (numeric === true) {
-    confirmString += numeric;
+  if (numbers === true) {
+    confirmString += numberChars;
   }
 
   var special = confirm(
@@ -65,30 +69,24 @@ function generatePassword() {
   );
 
   if (special === true) {
-    confirmString += special;
+    confirmString += specialChars;
   }
 
   console.log(confirmString);
+  // console.log(confirmString[0]);
 
-  let randPass = "";
+  // var randomIndex = Math.floor(Math.random() * confirmString.length);
+  // console.log(confirmString[randomIndex]);
+
+  let randomPass = "";
 
   for (let i = 0; i < passwordLength; i++) {
     var randomIndex = Math.floor(Math.random() * confirmString.length);
-    randPass += confirmString[randomIndex];
+    randomPass += confirmString[randomIndex];
   }
 
-  console.log(randPass);
-
-  // var randomIndex = Math.floor(Math.random() * confirmString.length);
-
-  // console.log(randomIndex);
-
-  // console.log(confirmString[randomIndex]);
-
-  // // Log the password length for testing purposes
-  // console.log("Testing... Your Pass length is " + passwordLength);
-
-  return;
+  console.log(randomPass);
+  return randomPass;
 }
 
 // Function to write the generated password to the #password input field
