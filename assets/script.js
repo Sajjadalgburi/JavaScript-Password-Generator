@@ -7,9 +7,6 @@ const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerChars = "abcdefghijklmnopqrstuvwxyz";
 const specialChars = "!@#$%^&*()";
 
-// Combine all character sets into one string
-var allChars = numberChars + upperChars + lowerChars + specialChars;
-
 function generatePassword() {
   var passwordLength;
 
@@ -71,12 +68,6 @@ function generatePassword() {
   if (special === true) {
     confirmString += specialChars;
   }
-
-  console.log(confirmString);
-  // console.log(confirmString[0]);
-
-  // var randomIndex = Math.floor(Math.random() * confirmString.length);
-  // console.log(confirmString[randomIndex]);
 
   let randomPass = "";
 
