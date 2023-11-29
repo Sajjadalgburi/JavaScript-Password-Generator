@@ -7,6 +7,7 @@ const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerChars = "abcdefghijklmnopqrstuvwxyz";
 const specialChars = "!@#$%^&*()";
 
+// Function to generate a random password based on user preferences
 function generatePassword() {
   var passwordLength;
 
@@ -33,44 +34,32 @@ function generatePassword() {
     }
   }
 
-  // append method... Holds everything.
+  // String to store all possible characters based on user preferences
   let confirmString = "";
 
   // Confirm user preferences for password composition
   var lowerCase = confirm(
     "Would you like your password to contain lowercase letters?"
   );
-
-  if (lowerCase === true) {
-    confirmString += lowerChars;
-  }
+  if (lowerCase) confirmString += lowerChars;
 
   var upperCase = confirm(
     "Would you like your password to contain uppercase letters?"
   );
+  if (upperCase) confirmString += upperChars;
 
-  if (upperCase === true) {
-    confirmString += upperChars;
-  }
-
-  var numbers = confirm(
-    "Would you like your password to contain numbers characters?"
-  );
-
-  if (numbers === true) {
-    confirmString += numberChars;
-  }
+  var numbers = confirm("Would you like your password to contain numbers?");
+  if (numbers) confirmString += numberChars;
 
   var special = confirm(
     "Would you like your password to contain special characters?"
   );
+  if (special) confirmString += specialChars;
 
-  if (special === true) {
-    confirmString += specialChars;
-  }
-
+  // Variable to store the generated password
   let randomPass = "";
 
+  // Generate the random password
   for (let i = 0; i < passwordLength; i++) {
     var randomIndex = Math.floor(Math.random() * confirmString.length);
     randomPass += confirmString[randomIndex];
