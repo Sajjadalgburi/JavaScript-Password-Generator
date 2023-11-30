@@ -41,20 +41,28 @@ function generatePassword() {
   var lowerCase = confirm(
     "Would you like your password to contain lowercase letters?"
   );
-  if (lowerCase) confirmString += lowerChars;
+  if (lowerCase === true) {
+    confirmString += lowerChars;
+  }
 
   var upperCase = confirm(
     "Would you like your password to contain uppercase letters?"
   );
-  if (upperCase) confirmString += upperChars;
+  if (upperCase === true) {
+    confirmString += upperChars;
+  }
 
   var numbers = confirm("Would you like your password to contain numbers?");
-  if (numbers) confirmString += numberChars;
+  if (numbers === true) {
+    confirmString += numberChars;
+  }
 
   var special = confirm(
     "Would you like your password to contain special characters?"
   );
-  if (special) confirmString += specialChars;
+  if (special === true) {
+    confirmString += specialChars;
+  }
 
   // Variable to store the generated password
   let randomPass = "";
@@ -65,7 +73,6 @@ function generatePassword() {
     randomPass += confirmString[randomIndex];
   }
 
-  console.log(randomPass);
   return randomPass;
 }
 
